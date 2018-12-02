@@ -1,0 +1,21 @@
+<div class="main-wrapper">
+  <mat-card class="card-wrapper">
+    <mat-card-title>
+      User Sign Up
+    </mat-card-title>
+    <mat-card-content>
+      <form class="form" [formGroup]="group">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="password" formControlName="password">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <button class="signInBtn" mat-fab color="warn" [disabled]="!group.valid" (click)="signUp()">SignUp</button>
+  </mat-card>
+</div>
