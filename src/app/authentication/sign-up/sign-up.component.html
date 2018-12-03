@@ -16,6 +16,11 @@
         </mat-form-field>
       </form>
     </mat-card-content>
-    <button class="signInBtn" mat-fab color="warn" [disabled]="!group.valid" (click)="signUp()">SignUp</button>
+    <mat-card-actions>
+      <small>
+        <a class="pointer" (click)="navigateToSignIn()">If registered? signin</a>
+      </small>
+    </mat-card-actions>
+    <button class="signUpBtn" mat-fab color="warn" [disabled]="!group.valid" (click)="signUp()">SignUp</button>
   </mat-card>
 </div>

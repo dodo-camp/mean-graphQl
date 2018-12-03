@@ -20,7 +20,11 @@
     width: 100%;
 }
 
-.signInBtn {
+.signUpBtn {
     position: absolute;
     right: 0;
+}
+
+.pointer {
+    cursor: pointer;
 }

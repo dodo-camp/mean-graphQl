@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginRegisterService } from '../services/login-register.service';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +10,7 @@ import { throwError } from 'rxjs';
 })
 export class SignUpComponent implements OnInit {
   public group: FormGroup;
-  constructor(private fb: FormBuilder, private loginService: LoginRegisterService) {
+  constructor(private fb: FormBuilder, private loginService: LoginRegisterService, private route: Router) {
     this._createGroup();
   }
 
@@ -35,6 +35,10 @@ export class SignUpComponent implements OnInit {
 
   protected _errorHandle(err) {
     console.log(err);
+  }
+
+  navigateToSignIn() {
+    this.route.navigateByUrl('/signIn');
   }
 
 }

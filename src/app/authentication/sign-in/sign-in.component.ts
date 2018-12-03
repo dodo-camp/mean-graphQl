@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginRegisterService } from '../services/login-register.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginRegisterService } from '../services/login-register.service';
 })
 export class SignInComponent implements OnInit {
   public group: FormGroup;
-  constructor(private fb: FormBuilder, private loginService: LoginRegisterService) {
+  constructor(private fb: FormBuilder, private loginService: LoginRegisterService, private route: Router) {
     this._createGroup();
   }
 
@@ -27,6 +28,10 @@ export class SignInComponent implements OnInit {
     this.loginService.userSignIn(this.group.value).subscribe((res) => {
       console.log(res);
     })
+  }
+
+  navigateToSignUp() {
+    this.route.navigateByUrl('/signUp');
   }
 
 }
