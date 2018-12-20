@@ -29,24 +29,27 @@ class UserService {
         }
     }
 
-    async login({ username, password }) {
+    async login({ username, password }, req) {
         const Users = this.mongoose.model('Users');
         const found = await Users.find({ username: username }, { password: 1, _id: 0 }).sort({ username: 1 }).limit(1);
         if (found.length) {
             let user = await found[0].validPassword(password);
-            if (user)
-                return this.sendResponseForLogin(true, "Logged In");
+            if (user) {
+                req.session.user = username;
+                return this.sendResponseForLogin(true, "Logged In", username);
+            }
             else
-                return this.sendResponseForLogin(false, "Wrong Username or Password");
+                return this.sendResponseForLogin(false, "Wrong Username or Password", "");
         }
         else
-            return this.sendResponseForLogin(false, "Wrong Username or Password");
+            return this.sendResponseForLogin(false, "Wrong Username or Password", "");
     }
 
-    sendResponseForLogin(success, message) {
+    sendResponseForLogin(success, message, username) {
         return {
             success: success,
-            message: message
+            message: message,
+            username: username
         }
     }
 }

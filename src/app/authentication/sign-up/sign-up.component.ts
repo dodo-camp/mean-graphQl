@@ -30,7 +30,10 @@ export class SignUpComponent implements OnInit {
   }
 
   protected _getResponse(response: any) {
-    console.log(response);
+    if (response.data.signUp.success)
+      this.route.navigateByUrl('/signIn');
+    else
+      alert(response.data.signUp.message);
   }
 
   protected _errorHandle(err) {

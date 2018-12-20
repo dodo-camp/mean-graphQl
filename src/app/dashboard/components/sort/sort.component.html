@@ -1,0 +1,12 @@
+<nav class="nav">
+  <div class="mt-1 ml-2">
+    <span>search</span>
+  </div>
+  <div class="mt-1 ml-2">
+    <form [formGroup]="group">
+      <select formControlName="tags">
+        <option *ngFor="let val of search" value="{{val.value}}">{{val.name}}</option>
+      </select>
+    </form>
+  </div>
+</nav>

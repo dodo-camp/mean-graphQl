@@ -1,6 +1,7 @@
 export type ResponseQ = {
     success: boolean,
-    message: string
+    message: string,
+    username: string
 }
 
 export type RequestQ = {

@@ -1,0 +1,22 @@
+<header class="page-header">
+  <div class="logo-wrapper">
+    <span class="logo">
+      <p class="logo-name">
+        {{username}}
+      </p>
+    </span>
+  </div>
+  <div class="search-wrapper" ui-view="col-2">
+    <div class="item-input-wrapper">
+      <i class="icon-search">
+        <mat-icon>search</mat-icon>
+      </i>
+      <form [formGroup]="group">
+        <input type="search" formControlName="query" placeholder="Search stories by title, url or author">
+      </form>
+    </div>
+  </div>
+  <span class="float-right" (click)="logOut()">
+    <b style="color:aliceblue;cursor:pointer">logout</b>
+  </span>
+</header>

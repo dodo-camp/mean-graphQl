@@ -6,9 +6,10 @@ class App {
     _init() {
         this._setApp();
         this._setPathAndConfig();
-        this._setAppStaticPath();
         this._initServiceLocator();
+        this._setSession();
         this._initDataBase();
+        this._setAppStaticPath();
         this._setGraphQl();
         this._setRoute();
         this._listen();
@@ -28,6 +29,11 @@ class App {
         require('@config/depedency/di')();
     }
 
+    _setSession() {
+        const Session = require('@config/session/session');
+        new Session(this.app, this.config.session);
+    }
+
     _setAppStaticPath() {
         this.app.use(this.express.static(this.path.join(__dirname, '../dist/App')));
     }
@@ -39,16 +45,16 @@ class App {
 
     _setGraphQl() {
         const express_graphql = require('express-graphql');
+        const bodyParser = require('body-parser')
         const schema = require('@graphQl/schema');
         const root = require('@graphQl/resolver/index');
-        this.app.use('/graphql', (req, res) => {
-            express_graphql({
+        this.app.use('/graphql', bodyParser.json(),
+            express_graphql(req => ({
                 schema: schema,
                 rootValue: root,
-                context: { req, res },
+                context: { req },
                 graphiql: true
-            })(req, res)
-        });
+            })));
     }
 
     _setRoute() {

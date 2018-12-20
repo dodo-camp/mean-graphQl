@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LoginAuth } from '../authGuard/loginGuard/login.auth';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
@@ -10,10 +11,12 @@ export const routes: Routes = [
     },
     {
         path: 'signIn',
-        component: SignInComponent
+        component: SignInComponent,
+        canActivate: [LoginAuth]
     },
     {
         path: 'signUp',
-        component: SignUpComponent
+        component: SignUpComponent,
+        canActivate: [LoginAuth]
     }
 ]

@@ -9,6 +9,7 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+import { DashBoardAuth } from './authGuard/dashboardAuth/dashboard.auth';
 import { routes } from './app.routing';
 import { material } from './material/index';
 
@@ -25,7 +26,7 @@ import { material } from './material/index';
     RouterModule.forRoot(routes),
     ...material
   ],
-  providers: [],
+  providers: [DashBoardAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule {

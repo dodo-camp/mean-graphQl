@@ -26,7 +26,11 @@ export class SignInComponent implements OnInit {
 
   signIn() {
     this.loginService.userSignIn(this.group.value).subscribe((res) => {
-      console.log(res);
+      if (res.success) {
+        this.route.navigateByUrl(`/dashboard/${res.username}`);
+      }
+      else
+        alert(res.message);
     })
   }
 

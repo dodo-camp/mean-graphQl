@@ -24,6 +24,7 @@ export class LoginRegisterService {
         signIn(username: $username, password: $password) {
           success
           message
+          username
         }
       }
     `,

@@ -1,0 +1,45 @@
+<div class="container">
+  <app-navbar [group]="group" [username]="username"></app-navbar>
+  <section class="main">
+    <div class="sorting-wrap">
+      <app-sort [group]="group"></app-sort>
+    </div>
+    <div class="mt-4 mb-4 news-list" *ngIf="group.controls.tags.value == 'story'">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let res of result | paginate: { itemsPerPage: 20, currentPage: currentPage(), totalItems: 980 }">
+          <span class="title">
+            {{res.title}}
+          </span>
+          <div class="w-100">
+            <span class=" d-flex text-justify">
+              <small>{{res.points}} |</small>&nbsp;
+              <small>{{res.author}} |</small>&nbsp;
+              <small>{{res.num_comments}} comments |</small>&nbsp;
+              <small>
+                <a href="{{res.url}}">{{res.url}}</a>
+              </small>&nbsp;
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-4 mb-4 news-list" *ngIf="group.controls.tags.value == 'comment'">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let res of result | paginate: { itemsPerPage: 20, currentPage: currentPage(), totalItems: 980 }">
+          <span class="title">
+            {{res.story_title}}
+          </span>
+          <div class="w-100">
+            <span class="d-flex text-justify">
+              <small>{{res.points}} |</small>&nbsp;
+              <small>{{res.author}} |</small>&nbsp;
+              <small>comments</small>
+            </span>
+            <span class="text-justify" [innerHTML]="res.comment_text"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+</div>
