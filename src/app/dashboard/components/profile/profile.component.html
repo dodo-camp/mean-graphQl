@@ -1,4 +1,7 @@
 <div class="container">
+  <div style="position:absolute;z-index:999" class="mx-auto" *ngIf="loading">
+    <mat-card class="w-100">loading...</mat-card>
+  </div>
   <app-navbar [group]="group" [username]="username"></app-navbar>
   <section class="main">
     <div class="sorting-wrap">

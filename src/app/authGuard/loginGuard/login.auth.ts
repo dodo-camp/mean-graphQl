@@ -26,7 +26,7 @@ export class LoginAuth implements CanActivate {
         }).valueChanges.pipe(
             map(res => {
                 if (!res.data.loginAuth.success) {
-                    this.router.navigateByUrl(`/dashboard/${res.data.loginAuth.username}`);
+                    this.router.navigate(['dashboard', `${res.data.loginAuth.username}`]);
                     return false;
                 }
                 else {

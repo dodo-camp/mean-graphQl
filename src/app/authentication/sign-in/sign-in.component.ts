@@ -10,6 +10,7 @@ import { LoginRegisterService } from '../services/login-register.service';
 })
 export class SignInComponent implements OnInit {
   public group: FormGroup;
+  public loading: boolean = false;
   constructor(private fb: FormBuilder, private loginService: LoginRegisterService, private route: Router) {
     this._createGroup();
   }
@@ -25,12 +26,16 @@ export class SignInComponent implements OnInit {
   }
 
   signIn() {
+    this.loading = true;
     this.loginService.userSignIn(this.group.value).subscribe((res) => {
       if (res.success) {
+        this.loading = false;
         this.route.navigateByUrl(`/dashboard/${res.username}`);
       }
-      else
+      else {
+        this.loading = false;
         alert(res.message);
+      }
     })
   }
 

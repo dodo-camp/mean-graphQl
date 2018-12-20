@@ -1,13 +1,16 @@
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SortComponent } from './sort/sort.component';
+import { HistoryComponent } from './history/history.component';
 
 export const componets: any = [
     ProfileComponent,
     NavbarComponent,
-    SortComponent
+    SortComponent,
+    HistoryComponent
 ];
 
 export const componentsMap: any = {
-    profile: ProfileComponent
+    profile: ProfileComponent,
+    history: HistoryComponent
 }

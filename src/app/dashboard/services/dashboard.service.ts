@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import { onError } from 'apollo-link-error';
@@ -12,7 +12,7 @@ import { Query } from './query';
   providedIn: 'root'
 })
 export class DashboardService {
-
+  public historySubject: BehaviorSubject<{}> = new BehaviorSubject(null);
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
   public getResults({ query, tags, page }): Observable<any> {

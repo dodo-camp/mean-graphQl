@@ -1,5 +1,7 @@
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 export const material: any = [
-    MatIconModule
+    MatIconModule,
+    MatCardModule
 ]

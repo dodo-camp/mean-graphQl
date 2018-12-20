@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public result: any[];
   public totlaItems: number;
   public username: string;
+  public loading: boolean = false;
   private currentTag: string;
   private formValueChange$: Subscription;
   private activeRoutes$: Subscription;
@@ -73,6 +74,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       if (key == "tags")
         this._setPageToZero(queries[key]);
     });
+    this.dashBoardService.historySubject.next(queries);
     this.route.navigate([], {
       queryParams: queries,
       relativeTo: this.activatedRoute
@@ -88,12 +90,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   protected _searchHackerNews() {
+    this.loading = true;
     this.dashBoardService.getResults(this.group.value).subscribe(this._setResults.bind(this), this._handleError.bind(this));
   }
 
   protected _setResults(res: any) {
     this.result = res.hits;
     this.totlaItems = res.ngPages * res.hitsPerPage;
+    this.loading = false;
     window.scroll(0, 0);
   }
 

@@ -1,4 +1,7 @@
 <header class="page-header">
+  <div style="position:absolute;z-index:999" class="mx-auto" *ngIf="loading">
+    <mat-card>loading...</mat-card>
+  </div>
   <div class="logo-wrapper">
     <span class="logo">
       <p class="logo-name">
@@ -18,5 +21,8 @@
   </div>
   <span class="float-right" (click)="logOut()">
     <b style="color:aliceblue;cursor:pointer">logout</b>
+  </span>
+  <span class="float-right mr-2" (click)="historyPage()">
+    <b style="color:aliceblue;cursor:pointer">History</b>
   </span>
 </header>

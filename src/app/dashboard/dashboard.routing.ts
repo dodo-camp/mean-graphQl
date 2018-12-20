@@ -6,5 +6,9 @@ export const routes: Routes = [
         path: '',
         component: componentsMap.profile,
         pathMatch: 'full'
+    },
+    {
+        path: 'history',
+        component: componentsMap.history
     }
 ]

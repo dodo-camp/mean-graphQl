@@ -28,7 +28,7 @@ export class DashBoardAuth implements CanActivate {
                 if (res.data.dashboardAuth.success)
                     return true;
                 else {
-                    this.router.navigateByUrl('/signIn');
+                    this.router.navigate(["signIn"]);
                     return false;
                 }
             })
