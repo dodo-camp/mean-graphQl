@@ -23,7 +23,6 @@ class App {
     _setCors() {
         const cors = require('cors');
         this.app.use(cors());
-        this.app.set('trust proxy', 1)
     }
 
     _setPathAndConfig() {
