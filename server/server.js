@@ -4,6 +4,7 @@ class App {
     }
     _init() {
         this._setApp();
+        this._setCors();
         this._setPathAndConfig();
         this._setAppStaticPath();
         this._initServiceLocator();
@@ -17,6 +18,11 @@ class App {
     _setApp() {
         this.express = require('express');
         this.app = this.express();
+    }
+
+    _setCors() {
+        const cors = require('cors');
+        this.app.use(cors());
     }
 
     _setPathAndConfig() {
