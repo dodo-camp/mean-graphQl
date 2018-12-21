@@ -1,5 +1,5 @@
-const serviceLocator = require('@lib/service_locator');
-const mongoose = serviceLocator.get('mongoose');
+const serviceLocator = require('../../../lib/service_locator');
+const mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 

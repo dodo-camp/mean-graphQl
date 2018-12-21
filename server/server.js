@@ -1,6 +1,5 @@
 class App {
     constructor() {
-        require('module-alias/register')
         this._init();
     }
     _init() {
@@ -22,15 +21,15 @@ class App {
 
     _setPathAndConfig() {
         this.path = require('path');
-        this.config = require('@config/config')();
+        this.config = require('./config/config')();
     }
 
     _initServiceLocator() {
-        require('@config/depedency/di')();
+        require('./config/depedency/di')();
     }
 
     _setSession() {
-        const Session = require('@config/session/session');
+        const Session = require('./config/session/session');
         new Session(this.app, this.config.session);
     }
 
@@ -39,15 +38,15 @@ class App {
     }
 
     _initDataBase() {
-        const DataBase = require('@config/database/dbConfig/dbConfig');
+        const DataBase = require('./config/database/dbConfig/dbConfig');
         new DataBase(this.config.mongo.uri);
     }
 
     _setGraphQl() {
         const express_graphql = require('express-graphql');
         const bodyParser = require('body-parser')
-        const schema = require('@graphQl/schema');
-        const root = require('@graphQl/resolver/index');
+        const schema = require('./graphQl/schema');
+        const root = require('./graphQl/resolver/index');
         this.app.use('/graphql', bodyParser.json(),
             express_graphql((req, res) => ({
                 schema: schema,

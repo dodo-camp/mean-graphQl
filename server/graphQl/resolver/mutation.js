@@ -1,4 +1,4 @@
-const serviceLocator = require('@lib/service_locator');
+const serviceLocator = require('../../lib/service_locator');
 
 var mutation = {
     signUp: async (args, context) => {

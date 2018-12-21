@@ -31,7 +31,7 @@ class DataBase {
             process.exit(0);
         });
 
-        require('@config/database/schemas/index')();
+        require('../schemas/index')();
     }
 }
 
