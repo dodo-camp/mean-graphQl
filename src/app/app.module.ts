@@ -31,7 +31,7 @@ import { material } from './material/index';
 export class AppModule {
   constructor(apollo: Apollo, httpLink: HttpLink) {
     apollo.create({
-      link: httpLink.create({ uri: 'http://localhost:3000/graphql' }),
+      link: httpLink.create({ uri: 'https://dry-sea-87636.herokuapp.com', withCredentials: true }),
       cache: new InMemoryCache(),
       defaultOptions: {
         watchQuery: {

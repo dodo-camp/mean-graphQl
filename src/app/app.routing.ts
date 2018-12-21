@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path: 'dashboard/:username',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
+    },
+    {
+        path: '**',
+        redirectTo: 'signIn'
     }
 ]
