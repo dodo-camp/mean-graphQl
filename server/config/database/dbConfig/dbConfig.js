@@ -1,7 +1,6 @@
 class DataBase {
     constructor(uri) {
-        this.serviceLocator = require('@lib/service_locator');
-        this.mongoose = this.serviceLocator.get("mongoose");
+        this.mongoose = require("mongoose");
         this._connect(uri);
     }
 

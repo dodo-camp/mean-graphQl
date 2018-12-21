@@ -5,7 +5,7 @@ module.exports = () => {
     });
 
     serviceLocator.register('userService', (serviceLocator) => {
-        const mongoose = serviceLocator.get('mongoose');
+        const mongoose = require('mongoose');
         const UserService = require('@services/users');
         return new UserService(mongoose);
     });
