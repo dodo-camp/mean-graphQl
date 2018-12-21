@@ -7,7 +7,7 @@ module.exports = () => ({
     },
     session: (MongoStore) => ({
         secret: 'ClydeIsASquirrel',
-        resave: true,
+        resave: false,
         saveUninitialized: true,
         cookie: { path: '/', maxAge: 60 * 60 * 1000 },
         proxy: true,
