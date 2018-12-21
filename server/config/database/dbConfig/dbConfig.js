@@ -7,7 +7,7 @@ class DataBase {
     _connect(uri) {
         var dbURI = uri;
         if (process.env.NODE_ENV === 'production') {
-            dbURI = process.env.MONGOLAB_URI;
+            dbURI = "mongodb://test_app:addodo1996oct1@ds227332.mlab.com:27332/dodo";
         }
 
         this.mongoose.connect(dbURI, { useNewUrlParser: true });
