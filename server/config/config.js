@@ -5,14 +5,14 @@ module.exports = () => ({
     mongo: {
         uri: "mongodb://test_app:addodo1996oct1@ds227332.mlab.com:27332/dodo"
     },
-    session: (MemcachedStore) => ({
+    session: (MongoStore) => ({
         secret: 'ClydeIsASquirrel',
         resave: 'false',
         saveUninitialized: 'false',
         cookie: { path: '/', maxAge: 60 * 60 * 1000 },
-        store: new MemcachedStore({
-            servers: [process.env.MEMCACHIER_SERVERS],
-            prefix: '_session_'
+        store: new MongoStore({
+            url: 'mongodb://test_app:addodo1996oct1@ds227332.mlab.com:27332/dodo',
+            ttl: 60 * 60 * 1000
         })
     })
 });
