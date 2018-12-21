@@ -9,7 +9,6 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import { DashBoardAuth } from './authGuard/dashboardAuth/dashboard.auth';
 import { routes } from './app.routing';
 import { material } from './material/index';
 
@@ -26,14 +25,24 @@ import { material } from './material/index';
     RouterModule.forRoot(routes),
     ...material
   ],
-  providers: [DashBoardAuth],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(apollo: Apollo, httpLink: HttpLink) {
     apollo.create({
       link: httpLink.create({ uri: 'http://localhost:3000/graphql' }),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: 'network-only',
+          errorPolicy: 'ignore',
+        },
+        query: {
+          fetchPolicy: 'network-only',
+          errorPolicy: 'all',
+        }
+      }
     });
   }
 }

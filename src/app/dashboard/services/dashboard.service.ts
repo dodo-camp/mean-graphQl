@@ -12,7 +12,8 @@ import { Query } from './query';
   providedIn: 'root'
 })
 export class DashboardService {
-  public historySubject: BehaviorSubject<{}> = new BehaviorSubject(null);
+  private history: any[] = [];
+  public historySubject: BehaviorSubject<any[]> = new BehaviorSubject(null);
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
   public getResults({ query, tags, page }): Observable<any> {
@@ -31,6 +32,23 @@ export class DashboardService {
     }).valueChanges.pipe(
       map(res => res.data.logOut.success)
     )
+  }
+
+  public setHistory(history: any, username: string) {
+    let date = { date: new Date() };
+    let historyWithDate = { ...history, ...date };
+    this.history.push(historyWithDate);
+    this._removeDuplicate();
+    this.historySubject.next(this.history);
+    localStorage.setItem('history', JSON.stringify({ [username]: this.history }));
+  }
+
+  protected _removeDuplicate() {
+    const unique = this.history
+      .map(e => e["date"])
+      .map((e, i, final) => final.indexOf(e) === i && i)
+      .filter(e => this.history[e]).map(e => this.history[e]);
+    this.history = unique;
   }
 
 }

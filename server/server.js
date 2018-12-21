@@ -49,10 +49,10 @@ class App {
         const schema = require('@graphQl/schema');
         const root = require('@graphQl/resolver/index');
         this.app.use('/graphql', bodyParser.json(),
-            express_graphql(req => ({
+            express_graphql((req, res) => ({
                 schema: schema,
                 rootValue: root,
-                context: { req },
+                context: { req, res },
                 graphiql: true
             })));
     }

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { DashBoardAuth } from './authGuard/dashboardAuth/dashboard.auth';
 
 export const routes: Routes = [
     {
@@ -8,7 +7,6 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard/:username',
-        loadChildren: './dashboard/dashboard.module#DashboardModule',
-        canActivate: [DashBoardAuth]
+        loadChildren: './dashboard/dashboard.module#DashboardModule'
     }
 ]

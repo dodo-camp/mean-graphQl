@@ -74,7 +74,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       if (key == "tags")
         this._setPageToZero(queries[key]);
     });
-    this.dashBoardService.historySubject.next(queries);
+    this.dashBoardService.setHistory(queries,this.username);
     this.route.navigate([], {
       queryParams: queries,
       relativeTo: this.activatedRoute

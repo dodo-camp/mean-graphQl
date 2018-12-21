@@ -1,14 +1,17 @@
 import { Routes } from '@angular/router';
 import { componentsMap } from './components/index';
+import { DashBoardAuth } from '../authGuard/dashboardAuth/dashboard.auth';
 
 export const routes: Routes = [
     {
         path: '',
         component: componentsMap.profile,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [DashBoardAuth]
     },
     {
         path: 'history',
-        component: componentsMap.history
+        component: componentsMap.history,
+        canActivate: [DashBoardAuth]
     }
 ]

@@ -7,6 +7,8 @@ import { material } from './material/index';
 import { componets } from './components/index';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { DashBoardAuth } from '../authGuard/dashboardAuth/dashboard.auth';
+
 @NgModule({
   declarations: [...componets],
   imports: [
@@ -15,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RouterModule.forChild(routes),
     NgxPaginationModule,
     ...material
-  ]
+  ],
+  providers: [DashBoardAuth]
 })
 export class DashboardModule { }

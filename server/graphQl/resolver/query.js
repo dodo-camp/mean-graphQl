@@ -32,15 +32,29 @@ var query = {
             }
         }
     },
-    logOut: (args, { req }) => {
+    logOut: async (args, { req, res }) => {
         if (req.session.user && req.session.cookie) {
-            delete req.session.user;
-            req.session.destroy();
-            return {
-                success: true
+            let dest = await destroyCookie(req, res);
+            if (dest) {
+                return {
+                    success: true
+                }
             }
         }
     }
+}
+
+function destroyCookie(req, res) {
+    return new Promise((resolve, reject) => {
+        delete req.session.user;
+        req.session.destroy(function (err) {
+            res.cookie("cookie", null, {
+                maxAge: 0,
+                httpOnly: true
+            });
+            resolve(true);
+        });
+    })
 }
 
 module.exports = query;

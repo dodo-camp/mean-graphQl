@@ -1,3 +1,16 @@
-<p>
-  history works!
-</p>
+<mat-card>
+  <mat-card-header>
+    History
+  </mat-card-header>
+  <mat-card-content>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let history of histories">
+        <span class="info-wrapper">
+          <span>Search: {{history.tags}}</span>
+          <span>Query: {{history.query}}</span>
+          <small>Date: {{history.date}}</small>
+        </span>
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>
