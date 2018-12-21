@@ -17,7 +17,7 @@ export class DashboardService {
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
   public getResults({ query, tags, page }): Observable<any> {
-    return this.http.get(`http://hn.algolia.com/api/v1/search?query=${query}&tags=${tags}&page=${page}`);
+    return this.http.get(`https://hn.algolia.com/api/v1/search?query=${query}&tags=${tags}&page=${page}`);
   }
 
   public logOut() {
