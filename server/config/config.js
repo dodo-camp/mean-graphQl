@@ -10,7 +10,7 @@ module.exports = () => ({
         key: 'express.sid',
         sessionKey: 'application_dodo',
         name: 'cookie',
-        cookie: { path: '/', maxAge: 60 * 60 * 1000, httpOnly: true, secure: true, domain: "dry-sea-87636.herokuapp.com" },
+        cookie: { path: '/', maxAge: 60 * 60 * 1000 },
         resave: false,
         saveUninitialized: false,
         clientSecret: 'QEQWE@#4234234ASDASDCZXC__+++2123123',

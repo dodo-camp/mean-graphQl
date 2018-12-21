@@ -36,6 +36,8 @@ class App {
     }
 
     _setSession() {
+        const cookieParser = require('cookie-parser');
+        this.app.use(cookieParser());
         const Session = require('./config/session/session');
         new Session(this.app, this.config.session);
     }
