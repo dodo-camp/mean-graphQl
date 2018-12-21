@@ -6,10 +6,10 @@ class App {
     _init() {
         this._setApp();
         this._setPathAndConfig();
+        this._setAppStaticPath();
         this._initServiceLocator();
         this._setSession();
         this._initDataBase();
-        this._setAppStaticPath();
         this._setGraphQl();
         this._setRoute();
         this._listen();
